@@ -1,17 +1,20 @@
+# Overview
+
+Testing llm reranker with Hisolated aystack container. to not have sentence transformers bundles with business logic
+
+# Development
+
 docker build -t haystack-fastapi-reranker .
 
 docker run -d -p 8000:8000 -p 8001:8001 haystack-fastapi-reranker
 
-
 curl -X 'POST' \
-  'http://localhost:8001/rerank' \
-  -H 'Content-Type: application/json' \
-  -d '{
-  "query": "What is Haystack?",
-  "documents": ["Haystack is an NLP framework", "FastAPI is a web framework", "LangChain is for LLMs"]
+ 'http://localhost:8001/rerank' \
+ -H 'Content-Type: application/json' \
+ -d '{
+"query": "What is Haystack?",
+"documents": ["Haystack is an NLP framework", "FastAPI is a web framework", "LangChain is for LLMs"]
 }'
-
-
 
 docker exec -it <id> bash
 
